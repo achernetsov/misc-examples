@@ -1,0 +1,3 @@
+wiremock/*
+!wiremock/.gitkeep
+.mvn/wrapper/maven-wrapper.jar

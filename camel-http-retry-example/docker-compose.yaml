@@ -1,0 +1,12 @@
+version: "3"
+
+services:
+  # https://wiremock.org/studio/docs/getting-started/docker/
+  wiremock:
+    image: up9inc/wiremock-studio:2.32.0-18
+    container_name: camel-wiremock
+    ports:
+      - "9000:9000"
+      - "8000:8000"
+    volumes:
+      - ./wiremock:/home/wiremock
