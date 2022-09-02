@@ -1,0 +1,20 @@
+version: '2'
+
+services:
+
+  artemis:
+    image: quay.io/artemiscloud/activemq-artemis-broker:0.1.2
+    network_mode: host
+    environment:
+      AMQ_USER: quarkus
+      AMQ_PASSWORD: quarkus
+
+  producer:
+    image: quarkus-quickstarts/amqp-quickstart-producer:1.0-${QUARKUS_MODE:-jvm}
+    build:
+      context: amqp-quickstart-producer
+      dockerfile: src/main/docker/Dockerfile.${QUARKUS_MODE:-jvm}
+    environment:
+      AMQP_HOST: ${AMQP_HOST}
+      AMQP_PORT: 5672
+    network_mode: host
